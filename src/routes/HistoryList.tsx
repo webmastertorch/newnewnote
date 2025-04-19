@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { 
-  NavBar, 
-  List, 
-  InfiniteScroll, 
-  DotLoading, 
-  Empty, 
-  SpinLoading 
+import {
+  NavBar,
+  List,
+  InfiniteScroll,
+  DotLoading,
+  Empty,
+  SpinLoading
 } from 'antd-mobile';
 import { useAuthStore } from '../store/authStore';
 import { folderApi } from '../services/api';
@@ -22,25 +22,25 @@ interface MeetingRecord {
 const HistoryList: React.FC = () => {
   const navigate = useNavigate();
   const { folderToken } = useAuthStore();
-  
+
   const [records, setRecords] = useState<MeetingRecord[]>([]);
   const [pageToken, setPageToken] = useState<string>('');
   const [hasMore, setHasMore] = useState<boolean>(true);
   const [loading, setLoading] = useState<boolean>(true);
-  
+
   // 初始加载
   useEffect(() => {
     if (folderToken) {
       loadInitialRecords();
     }
   }, [folderToken]);
-  
+
   // 加载初始记录
   const loadInitialRecords = async () => {
     try {
       setLoading(true);
       const response = await folderApi.getMeetingRecords(folderToken);
-      
+
       setRecords(response.files || []);
       setPageToken(response.pageToken || '');
       setHasMore(response.hasMore || false);
@@ -50,14 +50,14 @@ const HistoryList: React.FC = () => {
       setLoading(false);
     }
   };
-  
+
   // 加载更多记录
   const loadMore = async () => {
     if (!pageToken || !folderToken) return;
-    
+
     try {
       const response = await folderApi.getMeetingRecords(folderToken, pageToken);
-      
+
       setRecords([...records, ...(response.files || [])]);
       setPageToken(response.pageToken || '');
       setHasMore(response.hasMore || false);
@@ -66,16 +66,16 @@ const HistoryList: React.FC = () => {
       setHasMore(false);
     }
   };
-  
+
   // 打开文档
   const openDocument = (token: string) => {
-    window.open(`https://www.lark.com/docs/${token}`, '_blank');
+    window.open(`https://www.larksuite.com/docs/${token}`, '_blank');
   };
-  
+
   // 格式化日期
   const formatDate = (dateString?: string) => {
     if (!dateString) return '';
-    
+
     const date = new Date(dateString);
     return date.toLocaleString('zh-CN', {
       year: 'numeric',
@@ -85,16 +85,16 @@ const HistoryList: React.FC = () => {
       minute: '2-digit',
     });
   };
-  
+
   return (
     <div className={styles.container}>
-      <NavBar 
+      <NavBar
         className={styles.navbar}
         onBack={() => navigate('/')}
       >
         历史记录
       </NavBar>
-      
+
       <div className={styles.content}>
         {loading ? (
           <div className={styles.loadingContainer}>
@@ -126,7 +126,7 @@ const HistoryList: React.FC = () => {
                 </List.Item>
               ))}
             </List>
-            
+
             <InfiniteScroll loadMore={loadMore} hasMore={hasMore}>
               {(hasMore) ? (
                 <div className={styles.loadingMore}>
@@ -144,4 +144,4 @@ const HistoryList: React.FC = () => {
   );
 };
 
-export default HistoryList; 
+export default HistoryList;

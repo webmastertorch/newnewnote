@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { NavBar, Button, Dialog, Toast } from 'antd-mobile';
-import { 
+import {
   HistogramOutline,
   UserOutline,
   CloseCircleOutline
@@ -16,7 +16,7 @@ const Home: React.FC = () => {
   const navigate = useNavigate();
   const [meetingTitle, setMeetingTitle] = useState('');
   const { user, logout } = useAuthStore();
-  
+
   const {
     status,
     duration,
@@ -27,40 +27,40 @@ const Home: React.FC = () => {
     stopRecording,
     generateDocument
   } = useRecorder();
-  
+
   // 打开历史记录列表
   const openHistory = () => {
     navigate('/history');
   };
-  
+
   // 处理登出
   const handleLogout = async () => {
     const result = await Dialog.confirm({
       content: '确定要退出登录吗？',
     });
-    
+
     if (result) {
       logout();
       navigate('/login');
     }
   };
-  
+
   // 结束录制并生成文档
   const finishRecording = async () => {
     if (status === 'recording') {
       await stopRecording();
     }
-    
+
     if (status === 'processing') {
       const document = await generateDocument();
-      
+
       if (document && document.token) {
         // 使用Larksuite域名
-        window.open(`https://larksuite.com/docs/${document.token}`, '_blank');
+        window.open(`https://www.larksuite.com/docs/${document.token}`, '_blank');
       }
     }
   };
-  
+
   // 渲染录音控制按钮
   const renderRecordingControls = () => {
     switch (status) {
@@ -77,7 +77,7 @@ const Home: React.FC = () => {
             {isInitializing ? '准备中...' : '开始记录'}
           </Button>
         );
-        
+
       case 'recording':
         return (
           <div className={styles.controlsContainer}>
@@ -98,7 +98,7 @@ const Home: React.FC = () => {
             </Button>
           </div>
         );
-        
+
       case 'processing':
         return (
           <Button
@@ -114,7 +114,7 @@ const Home: React.FC = () => {
         );
     }
   };
-  
+
   return (
     <div className={styles.container}>
       <NavBar
@@ -128,10 +128,10 @@ const Home: React.FC = () => {
         right={
           <div className={styles.userInfo} onClick={handleLogout}>
             {user?.avatar_url ? (
-              <img 
-                src={user.avatar_url} 
-                alt={user.name} 
-                className={styles.avatar} 
+              <img
+                src={user.avatar_url}
+                alt={user.name}
+                className={styles.avatar}
               />
             ) : (
               <UserOutline fontSize={24} />
@@ -142,12 +142,12 @@ const Home: React.FC = () => {
       >
         AI会议记录
       </NavBar>
-      
+
       <div className={styles.content}>
         <div className={styles.messageContainer}>
           <MessageList messages={messages} />
         </div>
-        
+
         <div className={styles.controlsWrapper}>
           {renderRecordingControls()}
         </div>
@@ -156,4 +156,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home; 
+export default Home;
