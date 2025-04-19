@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 // Lark API基础URL
-const LARK_API_BASE = 'https://open.feishu.cn/open-apis';
+const LARK_API_BASE = 'https://open.lark.com/open-apis';
 
 // 获取tenant_access_token
 async function getTenantToken() {

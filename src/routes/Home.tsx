@@ -55,8 +55,8 @@ const Home: React.FC = () => {
       const document = await generateDocument();
       
       if (document && document.token) {
-        // 打开飞书文档
-        window.open(`https://www.feishu.cn/docs/${document.token}`, '_blank');
+        // 打开Lark文档
+        window.open(`https://www.lark.com/docs/${document.token}`, '_blank');
       }
     }
   };

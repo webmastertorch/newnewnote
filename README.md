@@ -1,21 +1,21 @@
 # AI会议记录系统
 
-基于飞书和OpenAI的实时会议记录系统，可实现多人说话内容识别、自动生成会议纪要文档。
+基于Lark和OpenAI的实时会议记录系统，可实现多人说话内容识别、自动生成会议纪要文档。
 
 ## 主要功能
 
-- 飞书快速登录（无需扫码）
+- Lark快速登录（无需扫码）
 - 实时语音转文字
 - 多说话人识别
 - 自动生成会议纪要
-- 文档直接保存到飞书云文档
+- 文档直接保存到Lark云文档
 - 历史记录查看
 
 ## 技术栈
 
 - 前端: React + TypeScript + Vite + Zustand + Antd Mobile
 - 后端: Node.js + Fastify
-- API: 飞书开放平台 API + OpenAI API
+- API: Lark开放平台 API + OpenAI API
 
 ## 开发指南
 
@@ -55,13 +55,13 @@ npm start
 1. 在Railway上创建新项目
 2. 连接GitHub仓库
 3. 设置环境变量:
-   - `LARK_APP_ID` - 飞书App ID
-   - `LARK_APP_SECRET` - 飞书App Secret
+   - `LARK_APP_ID` - Lark App ID
+   - `LARK_APP_SECRET` - Lark App Secret
    - `OPENAI_API_KEY` - OpenAI API密钥
    - `ROOT_FOLDER_TOKEN` - 根文件夹Token（可选）
 4. 配置自定义域名
 
-### 飞书开放平台配置
+### Lark开放平台配置
 
 1. 创建企业自建应用
 2. 配置应用权限:

@@ -9,12 +9,12 @@ const RecordDetail: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   
-  // 重定向到飞书文档
+  // 重定向到Lark文档
   useEffect(() => {
     if (id) {
       try {
-        // 打开飞书文档
-        window.open(`https://www.feishu.cn/docs/${id}`, '_blank');
+        // 打开Lark文档
+        window.open(`https://www.lark.com/docs/${id}`, '_blank');
         setLoading(false);
       } catch (error) {
         setError('打开文档失败');
@@ -57,7 +57,7 @@ const RecordDetail: React.FC = () => {
             />
             <div className={styles.buttonContainer}>
               <a
-                href={`https://www.feishu.cn/docs/${id}`}
+                href={`https://www.lark.com/docs/${id}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.openButton}

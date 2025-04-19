@@ -69,7 +69,7 @@ const HistoryList: React.FC = () => {
   
   // 打开文档
   const openDocument = (token: string) => {
-    window.open(`https://www.feishu.cn/docs/${token}`, '_blank');
+    window.open(`https://www.lark.com/docs/${token}`, '_blank');
   };
   
   // 格式化日期

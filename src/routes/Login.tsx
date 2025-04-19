@@ -5,7 +5,7 @@ import { useAuthStore } from '../store/authStore';
 import { authApi, folderApi } from '../services/api';
 import styles from './Login.module.css';
 
-// 飞书App ID
+// Lark App ID
 const LARK_APP_ID = import.meta.env.VITE_LARK_APP_ID || '';
 
 const Login: React.FC = () => {
@@ -70,7 +70,7 @@ const Login: React.FC = () => {
     // 为移动端跳转设置重定向URL
     const redirectUri = encodeURIComponent(window.location.origin + window.location.pathname);
     
-    // 使用飞书提供的SDK函数开始授权流程
+    // 使用Lark提供的SDK函数开始授权流程
     if (window.lark) {
       window.lark.requestAuthCode({
         appId: LARK_APP_ID,
@@ -78,7 +78,7 @@ const Login: React.FC = () => {
       });
     } else {
       // 如果SDK未加载，直接跳转到授权页面
-      const authUrl = `https://open.feishu.cn/open-apis/authen/v1/index?redirect_uri=${redirectUri}&app_id=${LARK_APP_ID}`;
+      const authUrl = `https://open.lark.com/open-apis/authen/v1/index?redirect_uri=${redirectUri}&app_id=${LARK_APP_ID}`;
       window.location.href = authUrl;
     }
   };
@@ -96,7 +96,7 @@ const Login: React.FC = () => {
           className={styles.loginButton}
           onClick={handleLarkLogin}
         >
-          飞书登录
+          Lark登录
         </Button>
       </div>
     </div>

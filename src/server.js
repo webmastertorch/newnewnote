@@ -31,7 +31,7 @@ fastify.register(staticFiles, {
   prefix: '/',
 });
 
-// 飞书webhook处理路由
+// Larkwebhook处理路由
 fastify.post('/api/lark/webhook', async (request, reply) => {
   const body = request.body;
   
@@ -43,7 +43,7 @@ fastify.post('/api/lark/webhook', async (request, reply) => {
   }
   
   // 处理其他事件类型
-  fastify.log.info('收到飞书webhook事件', body);
+  fastify.log.info('收到Larkwebhook事件', body);
   
   // 返回成功响应
   return reply.code(200).send({ success: true });
