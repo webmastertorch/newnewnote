@@ -78,7 +78,7 @@ const Login: React.FC = () => {
       });
     } else {
       // 如果SDK未加载，直接跳转到授权页面
-      const authUrl = `https://open.lark.com/open-apis/authen/v1/index?redirect_uri=${redirectUri}&app_id=${LARK_APP_ID}`;
+      const authUrl = `https://open.larksuite.com/open-apis/authen/v1/index?redirect_uri=${redirectUri}&app_id=${LARK_APP_ID}`;
       window.location.href = authUrl;
     }
   };
