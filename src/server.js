@@ -31,6 +31,24 @@ fastify.register(staticFiles, {
   prefix: '/',
 });
 
+// 飞书webhook处理路由
+fastify.post('/api/lark/webhook', async (request, reply) => {
+  const body = request.body;
+  
+  // 处理URL验证请求
+  if (body && body.type === 'url_verification') {
+    return reply.code(200).send({
+      challenge: body.challenge
+    });
+  }
+  
+  // 处理其他事件类型
+  fastify.log.info('收到飞书webhook事件', body);
+  
+  // 返回成功响应
+  return reply.code(200).send({ success: true });
+});
+
 // 注册API路由
 fastify.register(oauthRoutes, { prefix: '/api' });
 fastify.register(driveRoutes, { prefix: '/api' });
