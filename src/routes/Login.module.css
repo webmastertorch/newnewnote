@@ -1,0 +1,62 @@
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--bg-light);
+  padding: 1rem;
+}
+
+.loginCard {
+  background-color: var(--bg-color);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 360px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+  text-align: center;
+}
+
+.logo {
+  margin-bottom: 2rem;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.loginButton {
+  margin-top: 1rem;
+  height: 2.5rem;
+  font-size: 1rem;
+}
+
+/* 移动端适配 */
+@media (max-width: 576px) {
+  .loginCard {
+    padding: 1.5rem;
+  }
+  
+  .logo {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1.5rem;
+  }
+} 
