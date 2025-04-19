@@ -65,7 +65,7 @@ export const useAuthStore = create<AuthState>()(
       }),
     }),
     {
-      name: 'larknote-auth', // localStorage的键名
+      name: 'larksuite-auth', // localStorage的键名
     }
   )
 ); 

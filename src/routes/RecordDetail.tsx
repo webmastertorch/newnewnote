@@ -13,8 +13,8 @@ const RecordDetail: React.FC = () => {
   useEffect(() => {
     if (id) {
       try {
-        // 打开Lark文档
-        window.open(`https://www.lark.com/docs/${id}`, '_blank');
+        // 修改为 Larksuite 文档链接
+        window.open(`https://www.larksuite.com/docs/${id}`, '_blank');
         setLoading(false);
       } catch (error) {
         setError('打开文档失败');
@@ -57,7 +57,7 @@ const RecordDetail: React.FC = () => {
             />
             <div className={styles.buttonContainer}>
               <a
-                href={`https://www.lark.com/docs/${id}`}
+                href={`https://www.larksuite.com/docs/${id}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.openButton}

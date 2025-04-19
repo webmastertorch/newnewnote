@@ -55,8 +55,8 @@ const Home: React.FC = () => {
       const document = await generateDocument();
       
       if (document && document.token) {
-        // 打开Lark文档
-        window.open(`https://www.lark.com/docs/${document.token}`, '_blank');
+        // 使用Larksuite域名
+        window.open(`https://larksuite.com/docs/${document.token}`, '_blank');
       }
     }
   };

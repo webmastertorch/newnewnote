@@ -59,10 +59,10 @@ const Login: React.FC = () => {
   
   // 处理Lark登录
   const handleLarkLogin = () => {
-    // 设置document.domain
+    // 修改 document.domain
     try {
       // @ts-ignore
-      document.domain = 'lark';
+      document.domain = 'larksuite.com';
     } catch (error) {
       console.warn('设置document.domain失败:', error);
     }
